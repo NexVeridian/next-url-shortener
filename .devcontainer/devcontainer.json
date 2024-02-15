@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// "image": "mcr.microsoft.com/devcontainers/typescript-node:0-20",
+	"build": {
+		// Path is relataive to the devcontainer.json file.
+		"dockerfile": "Dockerfile"
+	},
+	// https://github.com/microsoft/vscode-remote-release/issues/2485#issuecomment-1156342780
+	"runArgs": [
+		"--name",
+		"devcontainer-${containerWorkspaceFolderBasename}"
+	],
+	"initializeCommand": "docker rm -f devcontainer-${containerWorkspaceFolderBasename} || true",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/nix:1": {}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+	"postAttachCommand": {
+		"AddGitSafeDir": "git config --global --add safe.directory /workspaces/${containerWorkspaceFolderBasename}"
+	},
+	"onCreateCommand": {
+		"nix-shell": "nix-shell --command 'echo done install packages'"
+	},
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mutantdino.resourcemonitor",
+				"christian-kohler.path-intellisense",
+				"Gruntfuggly.todo-tree",
+				"ms-azuretools.vscode-docker",
+				"redhat.vscode-yaml",
+				"bradlc.vscode-tailwindcss",
+				"ms-vscode.vscode-typescript-next",
+				"esbenp.prettier-vscode",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
+			]
+		}
+	}
+}

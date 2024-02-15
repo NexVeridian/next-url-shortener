@@ -1,0 +1,39 @@
+version: "3"
+services:
+  nextjs:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - surrealdb
+
+  surrealdb:
+    container_name: surrealdb
+    image: surrealdb/surrealdb:latest
+    env_file:
+      - .env
+    entrypoint:
+      - /surreal
+      - start
+      - --user
+      - $DB_USER
+      - --pass
+      - $DB_PASSWORD
+      - file:/data/surrealdb
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          cpus: "1"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./data:/data
+    networks:
+      - surrealdb
+
+volumes:
+  data:
+
+networks:
+  surrealdb:
