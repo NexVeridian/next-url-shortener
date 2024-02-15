@@ -1,5 +1,7 @@
 ## Example .env
 ``` 
+# If not using docker, use 0.0.0.0:8000
+DB_PORT=surrealdb:8000
 DB_USER=root
 DB_PASSWORD=root
 ```
