@@ -54,7 +54,15 @@ export default function CreateCard() {
   const handleCopyUrl = () => {
     if (state && state.url) {
       const currentSiteName = window.location.hostname;
-      const url = `https://${currentSiteName}/${state.url.toString()}`;
+
+      let url = undefined;
+      if (currentSiteName === "localhost" || currentSiteName === "0.0.0.0") {
+        const currentPort = window.location.port;
+        url = `http://${currentSiteName}:${currentPort}/${state.url.toString()}`;
+      } else {
+        url = `https://${currentSiteName}/${state.url.toString()}`;
+      }
+
       navigator.clipboard.writeText(url)
         .catch(err => {
           console.error('Failed to copy URL to clipboard:', err);
