@@ -19,6 +19,8 @@ export async function querydb(prevState: any, formData: FormData) {
 	} return id[0];
 	`, { long_url: long_url });
 
-	console.log(long_url, url)
+	// @ts-ignore
+	url = url[0][0].id;
+
 	return { url: url };
 }
