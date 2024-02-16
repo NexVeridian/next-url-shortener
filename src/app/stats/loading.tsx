@@ -15,7 +15,7 @@ export default function GlobalError({
 		<CardGrid max_rows={1}>
 			<Card>
 				<CardHeader>
-					<CardTitle className="text-center text-2xl text-red-400">404 - Not Found</CardTitle>
+					<CardTitle className="text-1xl text-amber-400">Loading...</CardTitle>
 				</CardHeader>
 			</Card>
 		</CardGrid>

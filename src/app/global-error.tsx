@@ -12,7 +12,7 @@ export default function GlobalError({
 	error: Error & { digest?: string }
 }) {
 	return (
-		<CardGrid>
+		<CardGrid max_rows={1}>
 			<Card>
 				<CardHeader>
 					<CardTitle className="text-center text-2xl text-red-400">Error</CardTitle>

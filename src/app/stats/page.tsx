@@ -1,8 +1,16 @@
+import CardGrid from "@/components/card-grid";
+import { Card } from "@/components/ui/card";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
+import { querydb } from "./db";
 
-export default function StatsPage() {
+export default async function StatsPage() {
+	let data = await querydb();
 	return (
-		<div>
-			<h1>Stats</h1>
-		</div>
+		<CardGrid max_rows={1}>
+			<Card>
+				<DataTable columns={columns} data={data[0]} />
+			</Card>
+		</CardGrid>
 	);
 }
