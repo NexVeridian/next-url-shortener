@@ -8,9 +8,9 @@ export default function Nav() {
         <Link href="/">Next Url Shortener</Link>
       </div>
 
-      <div className="transition-colors text-foreground/50 hover:text-foreground/100">
+      {/* <div className="transition-colors text-foreground/50 hover:text-foreground/100">
         <Link href="/create">Create</Link>
-      </div>
+      </div> */}
 
       <div className="transition-colors text-foreground/50 hover:text-foreground/100">
         <Link href="/stats">Stats</Link>
