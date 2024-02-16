@@ -18,7 +18,10 @@ export const columns: ColumnDef<UrlTable>[] = [
     accessorKey: "long_url",
     header: "URL",
   },
-  { accessorKey: "id", header: "ID" },
+  {
+    accessorKey: "id",
+    header: "Short URL",
+  },
   {
     accessorKey: "date_accessed",
     header: "Date Accessed",

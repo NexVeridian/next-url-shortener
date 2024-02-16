@@ -1,0 +1,15 @@
+/.devcontainer
+/.github
+/.vscode
+/.next
+/data
+/target
+/node_modules
+.dockerignore
+.env
+.gitignore
+Cargo.lock
+docker-compose.dev.yml
+docker-compose.yml
+dockerfile
+*.md

@@ -10,8 +10,6 @@ export async function querydb() {
 		limit 50;
 		`);
 
-    // @ts-ignore
-    console.log(stats);
     return stats;
   } catch (e) {
     return;
