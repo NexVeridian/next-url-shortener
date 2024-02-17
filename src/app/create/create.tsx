@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/popover";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CopyIcon } from "@radix-ui/react-icons";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { querydb } from "./db";
@@ -33,23 +33,16 @@ const initialState = {
   url: null,
 }
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit">Submit</Button>
-  );
-}
-
 export default function CreateCard() {
   // @ts-ignore
-  const [state, formAction] = useFormState(querydb, initialState);
+  let [state, formAction] = useFormState(querydb, initialState);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       url: "",
     },
-  })
+  });
 
   const handleCopyUrl = () => {
     if (state && state.url) {
@@ -80,7 +73,7 @@ export default function CreateCard() {
       <CardContent>
         <Form {...form}>
           {/* @ts-ignore */}
-          <form action={form.handleSubmit(formAction)} className="space-y-8">
+          <form id="url_form" action={form.handleSubmit(formAction)} className="space-y-8">
             <FormField
               control={form.control}
               name="url"
@@ -94,12 +87,12 @@ export default function CreateCard() {
                 </FormItem>
               )}
             />
-            <SubmitButton />
           </form>
         </Form>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="flex flex-row gap-4">
+        <Button type="submit" form="url_form">Submit</Button>
         {state && state.url && (
           <Popover>
             <PopoverTrigger>

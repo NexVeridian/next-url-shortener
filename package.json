@@ -27,7 +27,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
     "surrealdb.js": "^0.11.0",
-    "swr": "^2.2.4",
+    "swr": "^2.2.5",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "ws": "^8.16.0",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/prop-types": "^15.7.11",
-    "@types/react": "^18.2.55",
+    "@types/react": "^18.2.56",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.17",
     "eslint": "^8",

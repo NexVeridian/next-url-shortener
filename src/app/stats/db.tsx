@@ -9,7 +9,6 @@ export async function querydb() {
 		order by clicks desc
 		limit 50;
 		`);
-
     return stats;
   } catch (e) {
     return;

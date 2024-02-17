@@ -1,4 +1,4 @@
-import Nav from "@/components/Nav";
+import Nav from "@/components/nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
