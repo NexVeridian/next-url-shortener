@@ -5,11 +5,11 @@ services:
         env_file:
             - .env
         ports:
-            - "3000:3000"
+            - 3000:3000
         depends_on:
             - surrealdb
         networks:
-            - surrealdb_network
+            - surrealdb-network
 
     surrealdb:
         container_name: surrealdb
@@ -28,16 +28,16 @@ services:
         deploy:
             resources:
                 reservations:
-                    cpus: "1"
+                    cpus: 1
         ports:
             - 8000:8000
         volumes:
             - ./data:/data
         networks:
-            - surrealdb_network
+            - surrealdb-network
 
 volumes:
     data:
 
 networks:
-    surrealdb_network:
+    surrealdb-network:

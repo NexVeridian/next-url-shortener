@@ -13,7 +13,6 @@ export default function StatsPage() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await querydb();
-      console.log(result);
       // @ts-ignore
       setData(result);
     };

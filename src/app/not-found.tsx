@@ -6,11 +6,7 @@ import {
   CardTitle
 } from "@/components/ui/card";
 
-export default function GlobalError({
-  error,
-}: {
-  error: Error & { digest?: string }
-}) {
+export default function NotFound() {
   return (
     <CardGrid max_rows={1}>
       <Card>

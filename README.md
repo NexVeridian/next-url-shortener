@@ -1,3 +1,16 @@
+# Install
+Copy [docker-compose.yml](./docker-compose.yml)
+
+Create data folder next to docker-compose.yml and .env, and set the data type in .env   
+```
+├── data
+│   └── surrealdb
+├── docker-compose.yml
+└── .env
+```
+
+`docker compose up --pull always -d`
+
 ## Example .env
 ``` 
 # If not using docker, use 0.0.0.0:8000
