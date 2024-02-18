@@ -11,5 +11,5 @@
 Cargo.lock
 docker-compose.dev.yml
 docker-compose.yml
-dockerfile
+Dockerfile
 *.md

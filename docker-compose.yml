@@ -1,6 +1,7 @@
 version: "3"
 services:
-    nextjs:
+    next-url-shortener:
+        container_name: next-url-shortener
         build: .
         env_file:
             - .env
@@ -9,7 +10,7 @@ services:
         depends_on:
             - surrealdb
         networks:
-            - surrealdb-network
+            - surrealdb
 
     surrealdb:
         container_name: surrealdb
@@ -34,10 +35,10 @@ services:
         volumes:
             - ./data:/data
         networks:
-            - surrealdb-network
+            - surrealdb
 
 volumes:
     data:
 
 networks:
-    surrealdb-network:
+    surrealdb:
