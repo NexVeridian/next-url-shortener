@@ -11,7 +11,6 @@ export async function querydb(prevState: any, formData: FormData) {
 		const long_url = values.data.url;
 
 		let db = await initConnection();
-		console.log(db);
 		let url = await db.query(`
 		create url:[rand::string(8)] CONTENT {
 				long_url: string::replace(string::replace($long_url, "https://", ""), "http://", ""),
@@ -23,7 +22,6 @@ export async function querydb(prevState: any, formData: FormData) {
 
 		// @ts-ignore
 		url = url[0][0].id;
-		console.log("URL", url);
 
 		return { url: url };
 	} catch (e) {

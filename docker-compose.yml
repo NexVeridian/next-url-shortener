@@ -9,7 +9,7 @@ services:
         depends_on:
             - surrealdb
         networks:
-            - surrealdb
+            - surrealdb_network
 
     surrealdb:
         container_name: surrealdb
@@ -34,10 +34,10 @@ services:
         volumes:
             - ./data:/data
         networks:
-            - surrealdb
+            - surrealdb_network
 
 volumes:
     data:
 
 networks:
-    surrealdb:
+    surrealdb_network:

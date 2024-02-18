@@ -1,16 +1,26 @@
-"use server";
+"use client";
 import CardGrid from "@/components/card-grid";
 import { Card } from "@/components/ui/card";
+import { useEffect, useState } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import { querydb } from "./db";
+import Loading from "./loading";
 
-export default async function StatsPage() {
-  let data = await querydb();
-  // @ts-ignore
-  data = data[0];
+export default function StatsPage() {
+  let [data, setData] = useState([]);
 
-  if (data !== undefined) {
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await querydb();
+      console.log(result);
+      // @ts-ignore
+      setData(result);
+    };
+    fetchData();
+  }, []);
+
+  if (data.length !== 0 && data !== undefined && data !== null) {
     const formatDate = (dateString: string | number | Date) => {
       const date = new Date(dateString);
       const day = String(date.getDate()).padStart(2, '0');
@@ -19,6 +29,7 @@ export default async function StatsPage() {
       return `${month}/${day}/${year}`;
     };
 
+    // @ts-ignore
     data = data.map(item => ({
       // @ts-ignore
       ...item,
@@ -31,7 +42,9 @@ export default async function StatsPage() {
     }));
   }
 
-  return (
+  return data.length === 0 ? (
+    <Loading />
+  ) : (
     <CardGrid max_rows={1}>
       <Card>
         {/* @ts-ignore */}

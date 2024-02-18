@@ -9,8 +9,12 @@ export async function querydb() {
 		order by clicks desc
 		limit 50;
 		`);
+
+    // @ts-ignore
+    stats = stats[0];
+
     return stats;
   } catch (e) {
-    return;
+    return [];
   }
 }
