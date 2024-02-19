@@ -1,18 +1,30 @@
 "use server";
-import { initConnection } from "@/components/db-utils";
+import { initConnectionPostgres, initConnectionSurreal } from "@/components/db-utils";
 
 export async function querydb() {
   try {
-    let db = await initConnection();
-    // console.log(db);
-    let stats = await db.query(`
-    select * from url 
-    order by clicks desc
-    limit 50;
-    `);
+    let stats = [];
+    if (process.env.DB_TYPE === "surrealdb") {
+      let db = await initConnectionSurreal();
+      // console.log(db);
+      stats = await db.query(`
+      select * from url 
+      order by clicks desc
+      limit 50;
+      `);
 
-    // @ts-ignore
-    stats = stats[0];
+      // @ts-ignore
+      stats = stats[0];
+    }
+
+    if (process.env.DB_TYPE === "postgres") {
+      let sql = await initConnectionPostgres();
+      stats = await sql`
+      select * from url 
+      order by clicks desc
+      limit 50;
+      `;
+    }
 
     return stats;
   } catch (e) {

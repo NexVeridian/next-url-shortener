@@ -44,7 +44,7 @@ export default function StatsPage() {
   return data.length === 0 ? (
     <Loading />
   ) : (
-    <CardGrid max_rows={1}>
+    <CardGrid maxCols={1}>
       <Card>
         {/* @ts-ignore */}
         <DataTable columns={columns} data={data} />

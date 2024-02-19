@@ -1,0 +1,36 @@
+version: "3"
+services:
+    next-url-shortener:
+        container_name: next-url-shortener
+        build: .
+        env_file:
+            - .env
+        ports:
+            - 3000:3000
+        depends_on:
+            - postgres
+        networks:
+            - postgres
+
+    postgres:
+        container_name: postgres
+        image: postgres:latest
+        env_file:
+            - .env
+        restart: always
+        deploy:
+            resources:
+                reservations:
+                    cpus: 1
+        ports:
+            - 5432:5432
+        volumes:
+            - ./data/postgres:/var/lib/postgresql/data
+        networks:
+            - postgres
+
+volumes:
+    data:
+
+networks:
+    postgres:

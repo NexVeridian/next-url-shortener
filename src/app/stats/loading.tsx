@@ -8,7 +8,7 @@ import {
 
 export default function Loading() {
   return (
-    <CardGrid max_rows={1}>
+    <CardGrid maxCols={1}>
       <Card>
         <CardHeader>
           <CardTitle className="text-1xl text-amber-400">Loading...</CardTitle>

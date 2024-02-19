@@ -1,37 +1,30 @@
 "use client";
 export default function CardGrid({
-  max_rows = 4,
+  maxCols: maxCols = 4,
   children,
   className,
   ...props
 }: {
-  max_rows?: number;
+  maxCols?: number;
   children?: React.ReactNode;
   className?: string;
 }) {
-  let baseClassName = `hidden items-start justify-center gap-6 rounded-lg p-8 md:grid`;
+  let baseClassName = `hidden items-start justify-center gap-6 rounded-lg p-8 md:grid md:grid-cols-1`;
 
-  switch (max_rows) {
-    case 1:
-      baseClassName += " md:grid-cols-1 ";
-      break;
-    case 2:
-      baseClassName += " md:grid-cols-1 lg:grid-cols-2 ";
-      break;
-    case 3:
-      baseClassName += " md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 ";
-      break;
-    case 4:
-      baseClassName += " md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 ";
-      break;
-    default:
-      break;
-  };
+  if (maxCols >= 2) {
+    baseClassName += " lg:grid-cols-2";
+  }
+  if (maxCols >= 3) {
+    baseClassName += " xl:grid-cols-3";
+  }
+  if (maxCols >= 4) {
+    baseClassName += " 2xl:grid-cols-4";
+  }
 
   if (className == undefined) {
     className = baseClassName;
   } else {
-    className = baseClassName + className;
+    className = baseClassName + " " + className;
   }
   return (
     <div

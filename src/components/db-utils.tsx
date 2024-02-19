@@ -1,9 +1,9 @@
 "use server";
-import "dotenv";
+import postgres, { Sql } from 'postgres';
 import { Surreal } from "surrealdb.js";
 const db = new Surreal();
 
-export async function initConnection(): Promise<Surreal> {
+export async function initConnectionSurreal(): Promise<Surreal> {
   try {
     db.connect("ws://" + process.env.DB_URL_PORT + "/rpc", {
       namespace: "url",
@@ -18,4 +18,18 @@ export async function initConnection(): Promise<Surreal> {
   }
 
   return db;
+}
+
+export async function initConnectionPostgres(): Promise<Sql<{}>> {
+  const DB_URL_PORT = (process.env.DB_URL_PORT || "postgres:5432").split(":");
+  const sql = postgres({
+    host: DB_URL_PORT[0],
+    port: parseInt(DB_URL_PORT[1]),
+    user: process.env.POSTGRES_USER || "root",
+    password: process.env.POSTGRES_PASSWORD || "root",
+    database: process.env.POSTGRES_DB || "url",
+    max: 100,
+    onnotice: () => { },
+  });
+  return sql;
 }

@@ -8,7 +8,7 @@ import {
 
 export default function NotFound() {
   return (
-    <CardGrid max_rows={1}>
+    <CardGrid maxCols={1}>
       <Card>
         <CardHeader>
           <CardTitle className="text-center text-2xl text-red-400">404 - Not Found</CardTitle>
