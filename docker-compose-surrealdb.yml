@@ -2,7 +2,7 @@ version: "3"
 services:
     next-url-shortener:
         container_name: next-url-shortener
-        build: .
+        image: ghcr.io/nexveridian/next-url-shortener:latest
         env_file:
             - .env
         ports:
