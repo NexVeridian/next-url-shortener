@@ -1,4 +1,5 @@
 "use client";
+
 export default function CardGrid({
   maxCols: maxCols = 4,
   children,
@@ -9,7 +10,7 @@ export default function CardGrid({
   children?: React.ReactNode;
   className?: string;
 }) {
-  let baseClassName = `hidden items-start justify-center gap-6 rounded-lg p-8 md:grid md:grid-cols-1`;
+  let baseClassName = `items-start justify-center gap-6 rounded-lg p-8 grid grid-cols-1`;
 
   if (maxCols >= 2) {
     baseClassName += " lg:grid-cols-2";
@@ -28,7 +29,7 @@ export default function CardGrid({
   }
   return (
     <div
-      className={`hidden items-start justify-center gap-6 rounded-lg p-8 md:grid " ${className}`}
+      className={`${className}`}
       {...props}
     >
       {children}
