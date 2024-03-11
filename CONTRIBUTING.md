@@ -1,6 +1,14 @@
 # Contributing code
 
 # Dev Install
+## Docker Compose
+### Copy one
+- [docker-compose-postgres.dev.yml](./docker-compose-postgres.dev.yml)
+- [docker-compose-surrealdb.dev.yml](./docker-compose-surrealdb.dev.yml)
+#### Then run:
+- `docker compose -f docker-compose-postgres.dev.yml up --pull always -d`
+- `docker compose -f docker-compose-surrealdb.dev.yml up --pull always -d`
+
 ## Dev Containers
 Install docker, vscode and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 

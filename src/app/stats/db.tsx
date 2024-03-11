@@ -10,7 +10,7 @@ export async function querydb() {
       stats = await db.query(`
       select * from url 
       order by clicks desc
-      limit 50;
+      limit 10;
       `);
 
       // @ts-ignore
@@ -22,7 +22,7 @@ export async function querydb() {
       stats = await sql`
       select * from url 
       order by clicks desc
-      limit 50;
+      limit 10;
       `;
     }
 
