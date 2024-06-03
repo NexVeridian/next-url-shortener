@@ -46,14 +46,17 @@ export default function CreateCard() {
 
   const handleCopyUrl = () => {
     if (state && state.url) {
+      let url = undefined;
       const currentSiteName = window.location.hostname;
 
-      let url = undefined;
-      if (currentSiteName === "localhost" || currentSiteName === "0.0.0.0") {
-        const currentPort = window.location.port;
-        url = `http://${currentSiteName}:${currentPort}/${state.url.toString()}`;
+      if (state.url.includes("https://")) {
+        url = state.url;
       } else {
-        url = `https://${currentSiteName}/${state.url.toString()}`;
+        if (currentSiteName === "localhost" || currentSiteName === "0.0.0.0") {
+          url = `http://${currentSiteName}:${window.location.port}/${state.url.toString()}`;
+        } else {
+          url = `https://${currentSiteName}/${state.url.toString()}`;
+        }
       }
 
       navigator.clipboard.writeText(url)

@@ -34,6 +34,8 @@ POSTGRES_DB=url
 # surrealdb 
 DB_USER=root
 DB_PASSWORD=root
+
+OVERRIDE_URL=s.nexv.dev
 ```
 
 # License

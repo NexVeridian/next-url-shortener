@@ -64,7 +64,12 @@ export async function querydb(prevState: any, formData: FormData) {
 
       url = url[0].id;
     }
+
     console.log(url);
+
+    if (process.env.OVERRIDE_URL !== undefined) {
+      url = `https://${process.env.OVERRIDE_URL}/${url.toString()}`;
+    }
 
     return { url: url };
   } catch (e) {
