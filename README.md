@@ -1,5 +1,5 @@
 # next-url-shortener
-A simple URL shortener using [Next.js](https://nextjs.org/) 14 server actions, [Postgres](https://www.postgresql.org/) or [SurrealDB](https://surrealdb.com/), [Shadcn/ui](http://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/).
+A URL shortener using [Next.js](https://nextjs.org/) 14 server actions, [Postgres](https://www.postgresql.org/) or [SurrealDB](https://surrealdb.com/), [Shadcn/ui](http://ui.shadcn.com/) and [Tailwind](https://tailwindcss.com/).
 
 # Install
 ### Copy one
@@ -9,16 +9,22 @@ A simple URL shortener using [Next.js](https://nextjs.org/) 14 server actions, [
 Create data folder next to docker-compose.yml and .env, and set the data type in .env   
 ```
 ├── data
+│	├── postgres
 │   └── surrealdb
+├── Makefile
 ├── docker-compose-postgres.yml
 └── .env
 ```
 ### Then run:
-- `docker compose -f docker-compose-postgres.yml up --pull always -d`
-- `docker compose -f docker-compose-surrealdb.yml up --pull always -d`
+- `make up-postgres`
+- `make up-surrealdb`
+
+### Then exit with:
+- `make down-postgres`
+- `make down-surrealdb`
 
 ## Example .env
-``` 
+```shell
 # postgres or surrealdb
 DB_TYPE=postgres
 
@@ -35,7 +41,8 @@ POSTGRES_DB=url
 DB_USER=root
 DB_PASSWORD=root
 
-OVERRIDE_URL=s.nexv.dev
+# Enter your website url here
+# OVERRIDE_URL=s.nexv.dev
 ```
 
 # License

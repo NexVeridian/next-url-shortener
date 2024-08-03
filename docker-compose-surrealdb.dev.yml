@@ -1,43 +1,50 @@
-version: "3"
 services:
-    nextjs:
-        build: .
-        env_file:
-            - .env
-        ports:
-            - "3000:3000"
-        depends_on:
-            - surrealdb
-        networks:
-            - surrealdb
+  nextjs:
+    container_name: next-url-shortener
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    depends_on:
+      - surrealdb
+    networks:
+      surrealdb:
+        # ipv4_address: 172.20.0.2
 
-    surrealdb:
-        container_name: surrealdb
-        image: surrealdb/surrealdb:latest-dev
-        env_file:
-            - .env
-        entrypoint:
-            - /surreal
-            - start
-            - --user
-            - $DB_USER
-            - --pass
-            - $DB_PASSWORD
-            - file:/data/surrealdb
-        restart: always
-        deploy:
-            resources:
-                reservations:
-                    cpus: "1"
-        ports:
-            - 8000:8000
-        volumes:
-            - ./data:/data
-        networks:
-            - surrealdb
+  surrealdb:
+    container_name: surrealdb
+    image: surrealdb/surrealdb:v2.0.0-alpha.9
+    env_file:
+      - .env
+    entrypoint:
+      - /surreal
+      - start
+      - --user
+      - $DB_USER
+      - --pass
+      - $DB_PASSWORD
+      - file:/data/surrealdb
+    user: root
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          cpus: 1.0
+    ports:
+      - 8000:8000
+    volumes:
+      - ./data:/data
+    networks:
+      surrealdb:
+        # ipv4_address: 172.20.0.1
 
 volumes:
-    data:
+  data:
 
 networks:
-    surrealdb:
+  surrealdb:
+    # ipam:
+    #   config:
+    #     - subnet: 172.20.0.0/16
+    #       gateway: 172.20.0.254

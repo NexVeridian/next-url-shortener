@@ -6,8 +6,8 @@
 - [docker-compose-postgres.dev.yml](./docker-compose-postgres.dev.yml)
 - [docker-compose-surrealdb.dev.yml](./docker-compose-surrealdb.dev.yml)
 #### Then run:
-- `docker compose -f docker-compose-postgres.dev.yml up --pull always -d`
-- `docker compose -f docker-compose-surrealdb.dev.yml up --pull always -d`
+- `make up-postgres.dev`
+- `make up-surrealdb.dev`
 
 ## Dev Containers
 Install docker, vscode and the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
@@ -20,7 +20,7 @@ Install docker, vscode and the [Dev Containers Extension](https://marketplace.vi
 
 `nix-shell`
 
-`npx npm-check-updates -u`
+`npx npm-check-updates -u && npm i --package-lock-only`
 
 # License
 All code in this repository is dual-licensed under either [License-MIT](./LICENSE-MIT) or [LICENSE-APACHE](./LICENSE-Apache) at your option. This means you can select the license you prefer. [Why dual license](https://github.com/bevyengine/bevy/issues/2373)

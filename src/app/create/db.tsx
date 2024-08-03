@@ -17,7 +17,8 @@ export async function querydb(prevState: any, formData: FormData) {
   if (!values.success) {
     return { error: values.error };
   }
-  const long_url = values.data.url;
+  let long_url = values.data.url.replace("https://", "").replace("http://", "");
+  long_url = long_url.endsWith('/') ? long_url.slice(0, -1) : long_url;
   let url = undefined;
 
   try {
@@ -31,7 +32,7 @@ export async function querydb(prevState: any, formData: FormData) {
 					date_accessed: <future> { time::now() }
 			} return id[0];
 			`, {
-        long_url: long_url.replace("https://", "").replace("http://", "")
+        long_url: long_url
       });
       // @ts-ignore
       url = url[0][0].id;
@@ -54,7 +55,7 @@ export async function querydb(prevState: any, formData: FormData) {
 			insert into url (id, long_url, clicks, date_added, date_accessed)
 			values (
 				${generateRandomString(8)},
-				${long_url.replace("https://", "").replace("http://", "")}, 
+				${long_url}, 
 				0, 
 				now(), 
 				now()

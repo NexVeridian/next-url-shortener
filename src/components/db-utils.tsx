@@ -5,7 +5,7 @@ const db = new Surreal();
 
 export async function initConnectionSurreal(): Promise<Surreal> {
   try {
-    db.connect("ws://" + process.env.DB_URL_PORT + "/rpc", {
+    await db.connect("ws://" + process.env.DB_URL_PORT + "/rpc", {
       namespace: "url",
       database: "url",
       auth: {

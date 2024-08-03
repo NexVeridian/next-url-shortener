@@ -9,7 +9,11 @@
 .env
 .gitignore
 Cargo.lock
-docker-compose.dev.yml
-docker-compose.yml
+docker-compose-postgres.yml
+docker-compose-postgres.dev.yml
+docker-compose-surrealdb.yml
+docker-compose-surrealdb.dev.yml
+Makefile
 Dockerfile
 *.md
+shell.nix

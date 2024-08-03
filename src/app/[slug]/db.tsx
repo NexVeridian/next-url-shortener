@@ -5,14 +5,11 @@ export async function querydb(slug: string) {
   let long_url = undefined;
   try {
     if (process.env.DB_TYPE === "surrealdb") {
-
       let db = await initConnectionSurreal();
-      let long_url = await db.query(`
-      update url:[$id] 
-      set clicks = clicks + 1;
-      select * from url:[$id];
+      long_url = await db.query(`
+      update url:[$id]
+      set clicks +=1;
       `, { id: slug });
-
       // @ts-ignore
       long_url = long_url[0][0].long_url;
     }
