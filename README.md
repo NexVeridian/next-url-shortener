@@ -6,7 +6,7 @@ A URL shortener using [Next.js](https://nextjs.org/) 14 server actions, [Postgre
 - [docker-compose-postgres.yml](./docker-compose-postgres.yml)
 - [docker-compose-surrealdb.yml](./docker-compose-surrealdb.yml)
 
-Create data folder next to docker-compose.yml and .env, and set the data type in .env   
+Create data folder next to docker-compose.yml and .env, and set the data type in .env
 ```
 ├── data
 │	├── postgres
@@ -24,7 +24,7 @@ Create data folder next to docker-compose.yml and .env, and set the data type in
 - `make down-surrealdb`
 
 ## Example .env
-```shell
+```bash
 # postgres or surrealdb
 DB_TYPE=postgres
 
@@ -37,7 +37,7 @@ POSTGRES_USER=root
 POSTGRES_PASSWORD=root
 POSTGRES_DB=url
 
-# surrealdb 
+# surrealdb
 DB_USER=root
 DB_PASSWORD=root
 
