@@ -1,6 +1,6 @@
 "use server";
 import postgres, { type Sql } from "postgres";
-import { Surreal } from "surrealdb.js";
+import { Surreal } from "surrealdb";
 const db = new Surreal();
 
 export async function initConnectionSurreal(): Promise<Surreal> {
